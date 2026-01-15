@@ -1,2 +1,3 @@
 # boku
-A runtime shared preferences hook untuk game boku-boku
+A remote-based Shared Preferences hook powered by Frida untuk game BOKU BOKU.
+Note: ada backdoor, jangan dipake :)
