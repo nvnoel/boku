@@ -1,3 +1,7 @@
+/***************************/
+/****** t.me/navalabs ******/
+/***************************/
+
 setTimeout(function() {
   Java.perform(function() {
     // setup java classes
@@ -7,7 +11,7 @@ setTimeout(function() {
     const File = Java.use("java.io.File");
     const FileInputStream = Java.use("java.io.FileInputStream");
     const FileOutputStream = Java.use("java.io.FileOutputStream");
-    const FileReader = Java.use("java.io.FileReader"); // FIXED: Wajib didefinisikan lewat Java.use
+    const FileReader = Java.use("java.io.FileReader"); // FIXED: Ditambahkan agar tidak crash
     const BufferedReader = Java.use("java.io.BufferedReader");
     const InputStreamReader = Java.use("java.io.InputStreamReader");
     const URL = Java.use("java.net.URL");
@@ -202,7 +206,7 @@ setTimeout(function() {
       }
 
       // 6. security
-      // FIXED: Menggunakan 'accountSecurity' sesuai request
+      // FIXED: Diganti ke accountSecurity sesuai perintah
       const sec = data.mods.accountSecurity || [];
       const ban = sec.find(m => m.id === "bypassBanMultiplayer");
       if (ban && ban.enabled) set_int("Multiplayer__Banned", 0);
