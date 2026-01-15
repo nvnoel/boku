@@ -1,8 +1,3 @@
-
-/***************************/
-/****** t.me/navalabs ******/
-/***************************/
-
 setTimeout(function() {
   Java.perform(function() {
     // setup java classes
@@ -12,6 +7,7 @@ setTimeout(function() {
     const File = Java.use("java.io.File");
     const FileInputStream = Java.use("java.io.FileInputStream");
     const FileOutputStream = Java.use("java.io.FileOutputStream");
+    const FileReader = Java.use("java.io.FileReader"); // FIXED: Wajib didefinisikan lewat Java.use
     const BufferedReader = Java.use("java.io.BufferedReader");
     const InputStreamReader = Java.use("java.io.InputStreamReader");
     const URL = Java.use("java.net.URL");
@@ -206,7 +202,8 @@ setTimeout(function() {
       }
 
       // 6. security
-      const sec = data.mods.security || [];
+      // FIXED: Menggunakan 'accountSecurity' sesuai request
+      const sec = data.mods.accountSecurity || [];
       const ban = sec.find(m => m.id === "bypassBanMultiplayer");
       if (ban && ban.enabled) set_int("Multiplayer__Banned", 0);
 
@@ -260,9 +257,12 @@ setTimeout(function() {
       }
 
       // read & parse config
-      const fr = BufferedReader.$new(java.io.FileReader.$new(conf_file));
+      const fr = BufferedReader.$new(FileReader.$new(conf_file));
       let buf, json_str = "";
-      while ((buf = fr.readLine()) !== null) json_str += buf;
+      
+      while ((buf = fr.readLine()) !== null) {
+          json_str += buf + "\n";
+      }
       fr.close();
 
       // clean comments & parse
